@@ -1,0 +1,33 @@
+import random
+
+def jouer_au_jeu():
+    # L'ordinateur choisit un nombre secret entre 1 et 100
+    nombre_secret = random.randint(1, 100)
+    tentatives = 0
+    gagne = False
+
+    print("=== BIENVENUE AU JEU DU NOMBRE MYSTÈRE ===")
+    print("J'ai choisi un nombre entre 1 et 100. À toi de le deviner !")
+
+    # Boucle principale du jeu
+    while not gagne:
+        try:
+            # Demande la saisie du joueur
+            Saisie = input("\nEntre ta proposition : ")
+            proposé = int(Saisie)
+            tentatives += 1
+
+            # Vérification du résultat
+            if proposé < nombre_secret:
+                print("C'est TROP BAS ! ⬆️")
+            elif proposé > nombre_secret:
+                print("C'est TROP HAUT ! ⬇️")
+            else:
+                print(f"\n🎉 BRAVO ! Tu as trouvé le nombre {nombre_secret} en {tentatives} tentatives !")
+                gagne = True
+                
+        except ValueError:
+            print("⚠️ Attention, tu dois entrer un nombre entier valide.")
+
+# Lancement du jeu
+jouer_au_jeu()
